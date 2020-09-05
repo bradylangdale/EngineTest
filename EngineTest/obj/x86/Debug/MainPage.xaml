@@ -1,0 +1,17 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="EngineTest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EngineTest"
+    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"                                       >
+    <Grid>
+        <canvas:CanvasAnimatedControl x:ConnectionId='2' x:Name="canvas" ClearColor="White"                      IsFixedTimeStep="True"              />
+        <Button x:ConnectionId='3' x:Name="Reset"               Content="Reset" Margin="0" VerticalContentAlignment="Top" UseLayoutRounding="True" Padding="8,4" Width="58" Height="32" VerticalAlignment="Top" HorizontalContentAlignment="Left">
+        </Button>
+        <Button x:ConnectionId='4' Content="Debug"                       Margin="63,-1,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Page>
+

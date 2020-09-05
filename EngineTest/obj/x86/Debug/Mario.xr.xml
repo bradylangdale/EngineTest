@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Roots >
+  <Roots.RootTypes>
+    <RootType FullName="Windows.UI.Xaml.Application">
+      <RootProperty Name="RequestedTheme" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Page">
+      <RootProperty Name="Content" />
+      <RootEvent Name="Loaded" />
+    </RootType>
+    <RootType FullName="Microsoft.Graphics.Canvas.UI.Xaml.CanvasAnimatedControl">
+      <RootProperty Name="ClearColor" />
+      <RootProperty Name="IsFixedTimeStep" />
+      <RootEvent Name="Update" />
+      <RootEvent Name="Draw" />
+    </RootType>
+    <RootType FullName="EngineTest.MainPage" />
+  </Roots.RootTypes>
+</Roots>
