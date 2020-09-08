@@ -26474,11 +26474,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\brady\\Desktop\\EngineTest\\EngineTest\\EngineTest.csproj",
+      "projectUniqueName": "C:\\Users\\brady\\Documents\\GitHub\\EngineTest\\EngineTest\\EngineTest.csproj",
       "projectName": "EngineTest",
-      "projectPath": "C:\\Users\\brady\\Desktop\\EngineTest\\EngineTest\\EngineTest.csproj",
+      "projectPath": "C:\\Users\\brady\\Documents\\GitHub\\EngineTest\\EngineTest\\EngineTest.csproj",
       "packagesPath": "C:\\Users\\brady\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\brady\\Desktop\\EngineTest\\EngineTest\\obj\\",
+      "outputPath": "C:\\Users\\brady\\Documents\\GitHub\\EngineTest\\EngineTest\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

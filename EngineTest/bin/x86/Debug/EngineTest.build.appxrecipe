@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>6dead1e4-5dc0-4ceb-9d64-7fde00e97451</PackageIdentityName>
     <PackageIdentityPublisher>CN=New Owner</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\brady\Desktop\EngineTest\EngineTest\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\EngineTest.exe">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\EngineTest.exe">
       <PackagePath>entrypoint\EngineTest.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
@@ -379,52 +379,52 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\EngineTest.xr.xml">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\EngineTest.xr.xml">
       <PackagePath>EngineTest.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\Core\EngineTest.exe">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\Core\EngineTest.exe">
       <PackagePath>EngineTest.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

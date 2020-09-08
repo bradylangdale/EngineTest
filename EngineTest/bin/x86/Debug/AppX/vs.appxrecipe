@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>6dead1e4-5dc0-4ceb-9d64-7fde00e97451</PackageIdentityName>
     <PackageIdentityPublisher>CN=New Owner</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\brady\Desktop\EngineTest\EngineTest\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>E0ACEED846A811FEAAE358A77C405106AE124F375587E61D7FBF14E950F1DAA4</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>6dead1e4-5dc0-4ceb-9d64-7fde00e97451_1.0.0.0_x86__c2nk4nw5qkmwj</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>6dead1e4-5dc0-4ceb-9d64-7fde00e97451_c2nk4nw5qkmwj!App</RegisteredUserModeAppID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T00:30:32.116</Modified>
+      <Modified>2020-09-08T16:28:25.872</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\EngineTest.exe">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\EngineTest.exe">
       <PackagePath>entrypoint\EngineTest.exe</PackagePath>
-      <Modified>2020-09-05T00:30:31.487</Modified>
+      <Modified>2020-09-08T16:28:25.487</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -506,67 +506,67 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2019-03-19T00:36:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2020-09-02T23:05:46.364</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2020-09-02T23:05:44.679</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-09-02T23:05:44.638</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-09-02T23:05:44.693</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-09-02T23:05:44.666</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-09-02T23:05:44.652</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-09-02T23:05:44.625</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-09-02T23:05:44.706</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\EngineTest.xr.xml">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\EngineTest.xr.xml">
       <PackagePath>EngineTest.xr.xml</PackagePath>
       <Modified>2020-09-02T23:05:45.981</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-09-04T04:47:05.740</Modified>
+      <Modified>2020-09-08T16:28:25.343</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-09-04T04:47:05.740</Modified>
+      <Modified>2020-09-08T16:28:25.343</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2019-03-18T23:33:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-02T23:45:37.949</Modified>
+      <Modified>2020-09-08T07:24:39.834</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\brady\Desktop\EngineTest\EngineTest\bin\x86\Debug\Core\EngineTest.exe">
+    <AppxPackagedFile Include="C:\Users\brady\Documents\GitHub\EngineTest\EngineTest\bin\x86\Debug\Core\EngineTest.exe">
       <PackagePath>EngineTest.exe</PackagePath>
-      <Modified>2020-09-05T00:30:32.108</Modified>
+      <Modified>2020-09-08T16:28:25.855</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

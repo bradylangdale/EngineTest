@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.UI.Composition;
+using Windows.UI.ViewManagement.Core;
 
 namespace EngineTest
 {
@@ -48,6 +50,7 @@ namespace EngineTest
         public Vector2 velocity = new Vector2();
         public float angular_velocity = 0f;
         public Vector2 center = new Vector2();
+        private Vector2 displacement = new Vector2();
 
         public RigidBody(Triangle[] polygon, Vector2 position = new Vector2(), float rotation = 0f, float mass = 1f, float elasticity = 1f, bool Static = false)
         {
@@ -79,19 +82,25 @@ namespace EngineTest
             }
         }
 
-        private Triangle.TriangleResults CheckForCollision(RigidBody body)
+        private Triangle.TriangleResults CheckForCollision(RigidBody body, float dt)
         {
             foreach (Triangle thisTri in _poly)
             {
+                bool contacted = false;
                 foreach (Triangle tri in body.polygon)
                 {
-                    Triangle.TriangleResults results = tri.TestForCollsion(velocity, angular_velocity, thisTri);
+                    Triangle.TriangleResults[] results = tri.TestForCollsion(thisTri);
+                    foreach (Triangle.TriangleResults result in results)
+                    {
+                        if (!result.contact) continue;
+                        AdjustForCollision(body, result.normal, result.point, dt);
 
-                    if (!results.contact) continue;
-                    if (!Static)
-                        AdjustForCollision(results.depth, body, results.side.Normal(), results.point);
-                    else
-                        AdjustForCollision(results.depth, this, results.side.Normal(), results.point);
+                        if (!contacted)
+                        {
+                            displacement += -result.depth * result.normal;
+                            contacted = true;
+                        }
+                    }
                 }
             }
             return new Triangle.TriangleResults { contact = false };
@@ -99,35 +108,55 @@ namespace EngineTest
 
         public void Update(RigidBody[] bodies, float dt)
         {
+            if (Static) return;
+
             foreach (RigidBody body in bodies)
             {
                 if (body == this) continue;
-                CheckForCollision(body);
+                CheckForCollision(body, dt);
+                position += displacement;
+                displacement = new Vector2();
             }
 
-            if (Static) return;
             position += velocity * dt;
-            rotation += angular_velocity * dt * elasticity;
+            rotation += angular_velocity * dt * 0.1f;
         }
 
-        public void AdjustForCollision(float depth, RigidBody body, Vector2 normal, Vector2 point)
+        public void AdjustForCollision(RigidBody body, Vector2 normal, Vector2 point, float dt)
         {
-            if (velocity.Magnitude() > 0) position += -depth * velocity.Normalized();
-            //else body.position += Vector2.Vector2FromMag(body.velocity.Angle(), -depth);
-
             if (!body.Static)
             {
-                Vector2 resultv = new Vector2(normal.x * ((normal.x * velocity.x) + (normal.y * velocity.y)), normal.y * ((normal.x * velocity.x) + (normal.y * velocity.y)));
-                velocity = new Vector2(velocity.x - (elasticity) * resultv.x, velocity.y - (elasticity) * resultv.y);
-                //resultv = new Vector2(normal.x * ((normal.x * body.velocity.x) + (normal.y * body.velocity.y)), normal.y * ((normal.x * body.velocity.x) + (normal.y * body.velocity.y)));
-                //body.velocity = new Vector2(body.velocity.x - (body.elasticity) * resultv.x, body.velocity.y - (body.elasticity) * resultv.y);
+                Vector2 dv = velocity;
+                Vector2 dvb = body.velocity;
+
+                Vector2 nv = new Vector2(((mass - body.mass) / (mass + body.mass)) * velocity.x + ((2 * mass) / (mass + body.mass)) * body.velocity.x, ((mass - body.mass) / (mass + body.mass)) * velocity.y + ((2 * mass) / (mass + body.mass)) * body.velocity.y);
+                Vector2 nvb = new Vector2(((2 * body.mass) / (mass + body.mass)) * velocity.x - ((mass - body.mass) / (mass + body.mass)) * body.velocity.x, ((2 * body.mass) / (mass + body.mass)) * velocity.y - ((mass - body.mass) / (mass + body.mass)) * body.velocity.y);
+
+                Vector2 rv = new Vector2(normal.x * ((normal.x * nv.x) + (normal.y * nv.y)), normal.y * ((normal.x * nv.x) + (normal.y * nv.y)));
+                Vector2 rvb = new Vector2(-normal.x * ((-normal.x * nvb.x) + (-normal.y * nvb.y)), -normal.y * ((-normal.x * nvb.x) + (-normal.y * nvb.y)));
+
+                velocity = elasticity * rv;
+                body.velocity = body.elasticity * rvb;
+
+                Vector2 r = (point - position);
+                dv -= velocity;
+                Vector2 f = dv.Magnitude() * normal;
+                angular_velocity -= ((r.x * f.y - r.y * f.x) / mass) * dt;
+
+                Vector2 rb = (point - body.position);
+                dvb -= body.velocity;
+                Vector2 fb = dvb.Magnitude() * -normal;
+                body.angular_velocity -= ((rb.x * fb.y - rb.y * fb.x) / body.mass) * dt;
             }
             else
             {
+                Vector2 dv = velocity;
                 Vector2 newv = new Vector2(normal.x * ((normal.x * velocity.x) + (normal.y * velocity.y)), normal.y * ((normal.x * velocity.x) + (normal.y * velocity.y)));
-                velocity -= new Vector2((elasticity) * newv.x, (elasticity) * newv.y);
-                //angular_velocity +=  Vector2.DotProduct((position - point).Normal(), normal) * 0.008f;
-                Debug.WriteLine(Vector2.DotProduct((position - point).Normal(), normal));
+                velocity -= elasticity * newv; 
+                Vector2 r = (point - position);
+                dv -= velocity;
+                Vector2 f = dv.Magnitude() * normal;
+                angular_velocity -= (r.x * f.y - r.y * f.x) * dt;
             }
         }
     }

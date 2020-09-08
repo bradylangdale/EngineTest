@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Input;
 using Windows.System;
+using Windows.Devices.Display.Core;
 
 namespace EngineTest
 {
@@ -18,10 +19,10 @@ namespace EngineTest
         List<RigidBody> bodies = new List<RigidBody>();
         public static List<Vector2> p2d = new List<Vector2>();
         public static List<Vector2> lines = new List<Vector2>();
-        public static Vector2 pab, pac, pbc;
+        //public static Vector2 pab, pac, pbc;
         public static Vector2 origin;
         float t = 0;
-        static bool debug_drawing = true;
+        static bool debug_drawing = false;
 
         public MainPage()
         {
@@ -30,17 +31,13 @@ namespace EngineTest
 
         private void InitializeBodies()
         {
-            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -30), new Vector2(-30, 0) }), new Triangle(new Vector2[] { new Vector2(-30, 0), new Vector2(-30, -30), new Vector2(0, -30) }) }, new Vector2(0, 0), 0f, 1f, 0f, false));
-            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -35), new Vector2(-35, 0) })}, new Vector2(33, 150), 0, 10f, 0f, true));
-            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -25), new Vector2(-45, 0) }) }, new Vector2(-15, 180), 0, 99f, true));
-            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -55), new Vector2(15, 0) }) }, new Vector2(-195, 100), 0, 99f, true));
-            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -25), new Vector2(45, 0) }) }, new Vector2(-155, 180), 0, 99f, true));
-            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -95), new Vector2(-16, 0) }) }, new Vector2(60f, -80), -0.1f, 99f, true));
-            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -55), new Vector2(60, 0) }) }, new Vector2(-280f, 240), 0f, 99f, true));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -30), new Vector2(-30, 0) }), new Triangle(new Vector2[] { new Vector2(-30, 0), new Vector2(-30, -30), new Vector2(0, -30) }) }, new Vector2(0, 150), 0f, 1f, 0.90f, false));
+            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -60), new Vector2(-60, 0) }), new Triangle(new Vector2[] { new Vector2(-60, 0), new Vector2(-60, -60), new Vector2(0, -60) }) }, new Vector2(0, 240), 0f, 100000f, 0.1f, false));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -180), new Vector2(-360, 0) })}, new Vector2(440, 220), 0, 10f, 0f, true));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -180), new Vector2(360, 0) }) }, new Vector2(-440, 220), 0, 10f, 0f, true));
             bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 50), new Vector2(480, 0) }), new Triangle(new Vector2[] { new Vector2(480, 0), new Vector2(480, 50), new Vector2(0, 50) }) }, new Vector2(0, 300), t, 10f, 0f, true));
             bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 50), new Vector2(480, 0) }), new Triangle(new Vector2[] { new Vector2(480, 0), new Vector2(480, 50), new Vector2(0, 50) }) }, new Vector2(0, -300), 0f, 10f, 0f, true));
-            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -30), new Vector2(-30, 0) }), new Triangle(new Vector2[] { new Vector2(-30, 0), new Vector2(-30, -30), new Vector2(0, -30) }) }, new Vector2(150, 250), 0f, 1f, true));
-            bodies[0].velocity.y = 100f;
+            //bodies[0].velocity.y = 10f;
         }
 
         private void Initialized(object sender, RoutedEventArgs e)
@@ -51,38 +48,51 @@ namespace EngineTest
 
         private void FixedUpdate(ICanvasAnimatedControl sender, CanvasAnimatedUpdateEventArgs args)
         {
-            bodies[0].velocity.y += 1.2f;
-            foreach (RigidBody body in bodies)
+            try
             {
-                body.Update(bodies.ToArray(), args.Timing.ElapsedTime.Milliseconds * 0.001f);
+                if (bodies[0].position.x + origin.x < 0) bodies[0].position = new Vector2(origin.x, bodies[0].position.y);
+                if (bodies[0].position.x + origin.x > origin.x * 2) bodies[0].position = new Vector2(-origin.x, bodies[0].position.y);
+                if (bodies[0].position.y + origin.y < 0) bodies[0].position = new Vector2(bodies[0].position.x, origin.y);
+                if (bodies[0].position.y + origin.y > origin.y * 2) bodies[0].position = new Vector2(bodies[0].position.x, -origin.y);
+                bodies[0].velocity.y += 1.2f;
+                //bodies[1].velocity.y += 1.2f;
+                foreach (RigidBody body in bodies)
+                {
+                    body.Update(bodies.ToArray(), args.Timing.ElapsedTime.Milliseconds * 0.001f);
+                }
             }
+            catch { }
         }
 
         private void Update(ICanvasAnimatedControl sender, CanvasAnimatedDrawEventArgs screen)
         {
-            foreach (RigidBody body in bodies)
+            try
             {
-                foreach (Triangle tri in body.polygon)
+                foreach (RigidBody body in bodies)
                 {
-                    screen.DrawingSession.FillGeometry(CanvasGeometry.CreatePolygon(canvas.Device, tri.GetVertexArray(origin)), (body.velocity.Magnitude() <= 0) ? Colors.RoyalBlue : Colors.OrangeRed);
+                    foreach (Triangle tri in body.polygon)
+                    {
+                        screen.DrawingSession.FillGeometry(CanvasGeometry.CreatePolygon(canvas.Device, tri.GetVertexArray(origin)), (body.velocity.Magnitude() <= 0) ? Colors.RoyalBlue : Colors.OrangeRed);
+                    }
                 }
+
+                if (!debug_drawing) return;
+
+                foreach (Vector2 point in p2d)
+                {
+                    screen.DrawingSession.DrawCircle(point + origin, 2f, Colors.Red);
+                }
+
+                for (int i = 0; i < lines.Count; i += 2)
+                {
+                    screen.DrawingSession.DrawLine(lines[i] + origin, lines[i + 1] + origin, Colors.Green);
+                }
+
+                //screen.DrawingSession.DrawCircle(pab + origin, 2f, Colors.Cyan);
+                //screen.DrawingSession.DrawCircle(pac + origin, 2f, Colors.Cyan);
+                //screen.DrawingSession.DrawCircle(pbc + origin, 2f, Colors.Cyan);
             }
-
-            if (!debug_drawing) return;
-
-            foreach (Vector2 point in p2d)
-            {
-                screen.DrawingSession.DrawCircle(point + origin, 2f, Colors.Red);
-            }
-
-            for (int i = 0; i < lines.Count; i += 2)
-            {
-                screen.DrawingSession.DrawLine(lines[i] + origin, lines[i+1] + origin, Colors.Green);
-            }
-
-            screen.DrawingSession.DrawCircle(pab + origin, 2f, Colors.Cyan);
-            screen.DrawingSession.DrawCircle(pac + origin, 2f, Colors.Cyan);
-            screen.DrawingSession.DrawCircle(pbc + origin, 2f, Colors.Cyan);
+            catch { }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -92,7 +102,7 @@ namespace EngineTest
 
         private void reset(object sender, RoutedEventArgs e)
         {
-            t += 0.1f;
+            //t += 0.1f;
             bodies.Clear();
             InitializeBodies();
             p2d.Clear();
@@ -103,6 +113,7 @@ namespace EngineTest
         {
             if (e.Key == VirtualKey.A) bodies[0].velocity.x -= 10f;
             if (e.Key == VirtualKey.D) bodies[0].velocity.x += 10f;
+            if (e.Key == VirtualKey.W) bodies[0].velocity.y -= 100f;
         }
     }
 }

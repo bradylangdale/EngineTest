@@ -114,6 +114,19 @@ namespace EngineTest
             return new Vector2(-y, x).Normalized();
         }
 
+        public Vector2 Normal(Vector2 to, Vector2 point)
+        {
+            Vector2 n1 = point + new Vector2(-y, x).Normalized();
+            Vector2 n2 = point + new Vector2(y, -x).Normalized();
+            float d1 = to.DistanceFrom(n1);
+            float d2 = to.DistanceFrom(n2);
+
+            if (d1 > d2)
+                return point - n1;
+            else
+                return point - n2;
+        }
+
         public Vector2 Normalized()
         {
             float m = Magnitude();

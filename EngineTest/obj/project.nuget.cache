@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PxSyqh3bDWEYo5XWo3qFvf7z6/aNVb0bTAy8pUwMSZAcIOSLXaEk/C2MUHYGS2pyRiTCwheYMoHFbpi3M/pFIA==",
+  "dgSpecHash": "ykF/qlRGnaxnoX1GiFJoJ/guyRveY5AzY6LoCSevYTNl3tA52uZ/5DFwcDk+oxAxv1eDuAI0Rbaa5nxuurEAjg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\brady\\Desktop\\EngineTest\\EngineTest\\EngineTest.csproj",
+  "projectFilePath": "C:\\Users\\brady\\Documents\\GitHub\\EngineTest\\EngineTest\\EngineTest.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\brady\\.nuget\\packages\\microsoft.net.native.compiler\\1.7.0\\microsoft.net.native.compiler.1.7.0.nupkg.sha512",
