@@ -42,6 +42,15 @@ namespace EngineTest
             this.position = position - center;
         }
 
+        public struct TriangleResults
+        {
+            public bool contact, sameSide;
+            public float depth;
+            public Vector2 p1, p2;
+            public Vector2 normal;
+            public Vector2 point;
+        };
+
         public TriangleResults[] TestForCollsion(Triangle b)
         {
             int i = 0;
@@ -49,6 +58,15 @@ namespace EngineTest
             foreach (Vector2 pb in b.vertexes)
             {
                 contacts[i] = PointOfCollision(pb + b.position);
+                if (i != 0 && contacts[i - 1].contact && contacts[i].contact)
+                {
+                    contacts[i].contact = false;
+                    contacts[i - 1].p1 = contacts[i].point;
+                    contacts[i - 1].p2 = contacts[i - 1].point;
+                    contacts[i - 1].point += contacts[i].point;
+                    contacts[i - 1].point /= 2;
+                    contacts[i - 1].sameSide = true;
+                }
                 i++;
             }
 
@@ -57,20 +75,20 @@ namespace EngineTest
                 TriangleResults results = b.PointOfCollision(pa + position);
                 results.normal *= -1;
                 contacts[i] = results;
+                if (i != 4 && contacts[i - 1].contact && contacts[i].contact)
+                {
+                    contacts[i].contact = false;
+                    contacts[i - 1].p1 = contacts[i].point;
+                    contacts[i - 1].p2 = contacts[i - 1].point;
+                    contacts[i - 1].point += contacts[i].point;
+                    contacts[i - 1].point /= 2;
+                    contacts[i - 1].sameSide = true;
+                }
                 i++;
             }
 
             return contacts;
         }
-
-        public struct TriangleResults
-        {
-            public bool contact;
-            public float depth;
-            public int p1, p2;
-            public Vector2 normal;
-            public Vector2 point;
-        };
 
         public TriangleResults PointOfCollision(Vector2 vertex)
         {
@@ -102,23 +120,20 @@ namespace EngineTest
             if ((u > 0) && (v > 0) && (u + v < 1)) results.contact = true;
             else return results;
 
-            if (u < v && u < w) { results.p1 = 0; results.p2 = 1; }
-            else if (v < u && v < w) { results.p1 = 0; results.p2 = 2; }
-            else if (w < u && w < v) { results.p1 = 1; results.p2 = 2; }
+            int p1, p2;
+            if (u < v && u < w) { p1 = 0; p2 = 1; }
+            else if (v < u && v < w) { p1 = 0; p2 = 2; }
+            else { p1 = 1; p2 = 2; }
 
             Vector2 vp1, vp2;
-            vp1 = vertexes[results.p1] + position;
-            vp2 = vertexes[results.p2] + position;
+            vp1 = vertexes[p1] + position;
+            vp2 = vertexes[p2] + position;
             results.normal = (vp2 - vp1).Normal();
 
             if (PointOfIntersection(vp1, vp2, vertex, vertex - results.normal, out results.point)) results.depth = results.point.DistanceFrom(vertex);
             else results.depth = 0f;
             results.normal = (vp2 - vp1).Normal(position + center, results.point);
 
-            MainPage.p2d.Add(position + center);
-
-            MainPage.lines.Add(results.point);
-            MainPage.lines.Add(-30 * results.normal + results.point);
             return results;
         }
         private bool PointOfIntersection(Vector2 A, Vector2 B, Vector2 C, Vector2 D, out Vector2 point)

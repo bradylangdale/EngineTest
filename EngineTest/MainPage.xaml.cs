@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Windows.UI.Xaml.Input;
 using Windows.System;
 using Windows.Devices.Display.Core;
+using System;
 
 namespace EngineTest
 {
@@ -31,12 +32,21 @@ namespace EngineTest
 
         private void InitializeBodies()
         {
-            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -30), new Vector2(-30, 0) }), new Triangle(new Vector2[] { new Vector2(-30, 0), new Vector2(-30, -30), new Vector2(0, -30) }) }, new Vector2(0, 150), 0f, 1f, 0.90f, false));
-            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -60), new Vector2(-60, 0) }), new Triangle(new Vector2[] { new Vector2(-60, 0), new Vector2(-60, -60), new Vector2(0, -60) }) }, new Vector2(0, 240), 0f, 100000f, 0.1f, false));
-            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -180), new Vector2(-360, 0) })}, new Vector2(440, 220), 0, 10f, 0f, true));
-            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -180), new Vector2(360, 0) }) }, new Vector2(-440, 220), 0, 10f, 0f, true));
-            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 50), new Vector2(480, 0) }), new Triangle(new Vector2[] { new Vector2(480, 0), new Vector2(480, 50), new Vector2(0, 50) }) }, new Vector2(0, 300), t, 10f, 0f, true));
+            bodies.Add(new RigidBody(new Triangle[] {
+                new Triangle(new Vector2[] { new Vector2(), new Vector2(30, 0), new Vector2(0, -90) }),
+                new Triangle(new Vector2[] { new Vector2(30, 0), new Vector2(30, -90), new Vector2(0, -90) })}, new Vector2(-60, 150), 0, 3f, 0.5f, false));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -60), new Vector2(-60, 0) }), new Triangle(new Vector2[] { new Vector2(-60, 0), new Vector2(-60, -60), new Vector2(0, -60) }) }, new Vector2(0, 240), 0f, 3f, 0.5f, false));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -60), new Vector2(-60, 0) }), new Triangle(new Vector2[] { new Vector2(-60, 0), new Vector2(-60, -60), new Vector2(0, -60) }) }, new Vector2(80, 240), 0f, 3f, 0.5f, false));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -60), new Vector2(-60, 0) }), new Triangle(new Vector2[] { new Vector2(-60, 0), new Vector2(-60, -60), new Vector2(0, -60) }) }, new Vector2(-160f, 179f), 0f, 3f, 0.5f, false));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -60), new Vector2(-60, 0) }), new Triangle(new Vector2[] { new Vector2(-60, 0), new Vector2(-60, -60), new Vector2(0, -60) }) }, new Vector2(160f, 179f), 0f, 3f, 0.5f, false));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -200), new Vector2(-360, 0) })}, new Vector2(440, 220), 0, 10f, 0f, true));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, -200), new Vector2(360, 0) }) }, new Vector2(-440, 220), 0, 10f, 0f, true));
+            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 200), new Vector2(-360, 0) }) }, new Vector2(440, -220), 0, 10f, 0f, true));
+            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 200), new Vector2(360, 0) }) }, new Vector2(-440, -220), 0, 10f, 0f, true));
+            bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 50), new Vector2(480, 0) }), new Triangle(new Vector2[] { new Vector2(480, 0), new Vector2(480, 50), new Vector2(0, 50) }) }, new Vector2(0, 300), 0, 10f, 0f, true));
             bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 50), new Vector2(480, 0) }), new Triangle(new Vector2[] { new Vector2(480, 0), new Vector2(480, 50), new Vector2(0, 50) }) }, new Vector2(0, -300), 0f, 10f, 0f, true));
+            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 50), new Vector2(480, 0) }), new Triangle(new Vector2[] { new Vector2(480, 0), new Vector2(480, 50), new Vector2(0, 50) }) }, new Vector2(550, 0), (float)Math.PI / 2, 10f, 0f, true));
+            //bodies.Add(new RigidBody(new Triangle[] { new Triangle(new Vector2[] { new Vector2(), new Vector2(0, 50), new Vector2(480, 0) }), new Triangle(new Vector2[] { new Vector2(480, 0), new Vector2(480, 50), new Vector2(0, 50) }) }, new Vector2(-550, 0), (float)Math.PI / 2, 10f, 0f, true));
             //bodies[0].velocity.y = 10f;
         }
 
@@ -54,11 +64,39 @@ namespace EngineTest
                 if (bodies[0].position.x + origin.x > origin.x * 2) bodies[0].position = new Vector2(-origin.x, bodies[0].position.y);
                 if (bodies[0].position.y + origin.y < 0) bodies[0].position = new Vector2(bodies[0].position.x, origin.y);
                 if (bodies[0].position.y + origin.y > origin.y * 2) bodies[0].position = new Vector2(bodies[0].position.x, -origin.y);
+
+                if (bodies[1].position.x + origin.x < 0) bodies[1].position = new Vector2(origin.x, bodies[1].position.y);
+                if (bodies[1].position.x + origin.x > origin.x * 2) bodies[1].position = new Vector2(-origin.x, bodies[1].position.y);
+                if (bodies[1].position.y + origin.y < 0) bodies[1].position = new Vector2(bodies[1].position.x, origin.y);
+                if (bodies[1].position.y + origin.y > origin.y * 2) bodies[1].position = new Vector2(bodies[1].position.x, -origin.y);
+
+                if (bodies[2].position.x + origin.x < 0) bodies[2].position = new Vector2(origin.x, bodies[2].position.y);
+                if (bodies[2].position.x + origin.x > origin.x * 2) bodies[2].position = new Vector2(-origin.x, bodies[2].position.y);
+                if (bodies[2].position.y + origin.y < 0) bodies[2].position = new Vector2(bodies[2].position.x, origin.y);
+                if (bodies[2].position.y + origin.y > origin.y * 2) bodies[2].position = new Vector2(bodies[2].position.x, -origin.y);
+
                 bodies[0].velocity.y += 1.2f;
-                //bodies[1].velocity.y += 1.2f;
+                bodies[1].velocity.y += 1.2f;
+                bodies[2].velocity.y += 1.2f;
+                bodies[3].velocity.y += 1.2f;
+                bodies[4].velocity.y += 1.2f;
+
+                int collisions = 1;
+                int loops = 0;
+                while (collisions > 0 && loops < 3)
+                {
+                    collisions = 0;
+                    foreach (RigidBody body in bodies)
+                    {
+                        if (body.Static) continue;
+                        if (body.ResolveCollisions(bodies.ToArray(), args.Timing.ElapsedTime.Milliseconds * 0.001f, loops == 0)) collisions++;
+                    }
+                    loops++;
+                }
+
                 foreach (RigidBody body in bodies)
                 {
-                    body.Update(bodies.ToArray(), args.Timing.ElapsedTime.Milliseconds * 0.001f);
+                    body.Update(args.Timing.ElapsedTime.Milliseconds * 0.001f);
                 }
             }
             catch { }

@@ -104,6 +104,16 @@ namespace EngineTest
             return vec2;
         }
 
+        public static bool operator ==(Vector2 a, Vector2 b)
+        {
+            return a.x == b.x && a.y == b.y;
+        }
+
+        public static bool operator !=(Vector2 a, Vector2 b)
+        {
+            return a.x != b.x && a.y != b.y;
+        }
+
         public float Magnitude()
         {
             return (float)Math.Sqrt((x*x) + (y*y));
@@ -114,10 +124,11 @@ namespace EngineTest
             return new Vector2(-y, x).Normalized();
         }
 
-        public Vector2 Normal(Vector2 to, Vector2 point)
+        public Vector2 Normal(Vector2 to, Vector2 point, bool normalized = true)
         {
-            Vector2 n1 = point + new Vector2(-y, x).Normalized();
-            Vector2 n2 = point + new Vector2(y, -x).Normalized();
+
+            Vector2 n1 = point + ((normalized) ? new Vector2(-y, x).Normalized() : new Vector2(-y, x));
+            Vector2 n2 = point + ((normalized) ? new Vector2(y, -x).Normalized() : new Vector2(y, -x));
             float d1 = to.DistanceFrom(n1);
             float d2 = to.DistanceFrom(n2);
 
@@ -158,7 +169,12 @@ namespace EngineTest
 
         public static float DotProduct(Vector2 a, Vector2 b)
         {
-            return (a.x * b.x) + (a.y * b.y);
+            return a.x * b.x + a.y * b.y;
+        }
+
+        public static float CrossProduct(Vector2 a, Vector2 b)
+        {
+            return a.x * b.y - a.y * b.x;
         }
 
         public override string ToString()
